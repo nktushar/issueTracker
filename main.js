@@ -1,5 +1,3 @@
-const j = document
-
 document.getElementById('issueInputForm').addEventListener('submit', submitIssue);
 
 const getInputValue = id => document.getElementById(id).value;
@@ -67,6 +65,11 @@ const deleteIssue = id => {
 const fetchIssues = () => {
 
   const issues = JSON.parse(localStorage.getItem('issues'));
+
+
+  const openIssues = issues.filter(issue => issue.status == 'Open');
+  const closedIssue = issues.filter(issue => issue.status == 'Closed');
+  document.getElementById("title").innerHTML = "Issue Tracker: " + openIssues.length + " open, " + closedIssue.length + " closed";
 
   const issuesList = document.getElementById('issuesList');
 
